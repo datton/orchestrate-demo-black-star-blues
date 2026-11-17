@@ -1,1 +1,129 @@
-:root{/* design tokens: designer */}
+/* Design tokens: black-star-blues. Ghanaian red, gold and green with black; typography-led, no images.
+   One accent per surface: gold on dark, red on light. Green is a supporting accent.
+   Contrast (hand-calculated, WCAG AA):
+     light surfaces: ink on paper ~16:1, muted on paper ~6.9:1, red-600 on paper ~5.5:1, green-700 on paper ~6.4:1
+     dark surfaces:  paper on black ~17:1, muted-on-dark on black ~9:1, gold on black ~13:1,
+                     red-on-dark on black ~7:1, green-on-dark on black ~9.5:1
+     fills:          black text on gold ~13:1, white text on red-600 ~5.5:1, white text on green-700 ~6.4:1
+   Never use gold as text on light, and never use red-600 or green-700 as text on dark: use the -on-dark tokens.
+   Type: system fonts only, bold display scale with clamp(), tight tracking on large type.
+   Pair --surface-* with --on-* (text) so light and dark sections stay AA. */
+:root {
+  /* brand */
+  --red-600: #ce1126;
+  --red-700: #a80d1f;
+  --gold-400: #fcd116;
+  --gold-300: #fde26a;
+  --green-700: #006b3f;
+  --green-800: #004d2d;
+  --black: #0b0b0b;
+  --white: #ffffff;
+
+  /* text and surfaces: light */
+  --paper: #faf6ee;
+  --paper-2: #f1ebdd;
+  --ink: #14110f;
+  --muted: #5b544c;
+  --line: #ddd5c4;
+
+  /* text and surfaces: dark */
+  --night: #0b0b0b;
+  --night-2: #17140f;
+  --on-night: #faf6ee;
+  --muted-on-night: #b9b2a6;
+  --line-on-night: #2e2a23;
+
+  /* accents that pass on dark */
+  --red-on-dark: #ff6b6b;
+  --green-on-dark: #3fcf8e;
+
+  /* semantic */
+  --accent-light: var(--red-600);
+  --accent-dark: var(--gold-400);
+  --link-light: var(--red-700);
+  --link-dark: var(--gold-400);
+  --focus: #0b63ce;
+  --focus-on-dark: #8fc2ff;
+  --success: #1e6b45;
+  --success-bg: #e6f4ec;
+  --error: #b3261e;
+  --error-bg: #fdecea;
+  --booked-bg: var(--paper-2);
+
+  /* gradients (soft glows and gradient text) */
+  --gradient-flag: linear-gradient(90deg, var(--red-600), var(--gold-400), var(--green-700));
+  --gradient-flag-on-dark: linear-gradient(90deg, var(--red-on-dark), var(--gold-400), var(--green-on-dark));
+  --glow-gold: radial-gradient(60% 60% at 50% 40%, rgba(252, 209, 22, 0.22), transparent 70%);
+
+  /* fonts */
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* type scale: display uses clamp(), body steps are fixed */
+  --text-sm: 0.9rem;
+  --text-base: 1.0625rem;
+  --text-md: 1.25rem;
+  --text-lg: 1.6rem;
+  --text-step: clamp(1.5rem, 1.1rem + 1.6vw, 2.5rem);
+  --text-h2: clamp(2rem, 1.2rem + 3.6vw, 4rem);
+  --text-h1: clamp(2.6rem, 1rem + 7vw, 7rem);
+  --text-giant: clamp(4rem, 1rem + 14vw, 13rem);
+  --leading-tight: 1.02;
+  --leading-heading: 1.1;
+  --leading-body: 1.65;
+  --tracking-display: -0.035em;
+  --tracking-heading: -0.02em;
+  --weight-body: 400;
+  --weight-display: 800;
+  --measure: 65ch;
+
+  /* spacing and layout */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2.25rem;
+  --space-7: 3.5rem;
+  --space-8: 5rem;
+  --section-space: clamp(5rem, 12vw, 10rem);
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --content-width: 72rem;
+
+  /* shape and depth */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 2px 6px rgba(11, 11, 11, 0.08), 0 14px 40px rgba(11, 11, 11, 0.1);
+  --shadow-lift: 0 4px 10px rgba(11, 11, 11, 0.12), 0 22px 60px rgba(11, 11, 11, 0.16);
+  --border-width: 1px;
+  --focus-ring: 3px solid var(--focus);
+  --focus-ring-on-dark: 3px solid var(--focus-on-dark);
+
+  /* motion: animate only transform, opacity and filter */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 200ms;
+  --dur-base: 500ms;
+  --dur-slow: 800ms;
+  --dur-marquee: 60s;
+  --reveal-distance: 1.25rem;
+  --reveal-blur: 6px;
+  --stagger: 60ms;
+  --stagger-words: 55ms;
+}
+
+/* reduced motion: no movement, everything visible at once */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0.01ms;
+    --dur-base: 0.01ms;
+    --dur-slow: 0.01ms;
+    --dur-marquee: 0s;
+    --reveal-distance: 0;
+    --reveal-blur: 0;
+    --stagger: 0ms;
+    --stagger-words: 0ms;
+  }
+}
