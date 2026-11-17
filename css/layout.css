@@ -46,7 +46,7 @@ a{color:var(--_dark2);text-underline-offset:.2em}
 /* sections: alternate light and dark */
 main{display:block}
 .section{padding:var(--_space) var(--_gutter)}
-.section>*{max-width:var(--_max);margin-left:auto;margin-right:auto}
+.section>*{width:min(100%,var(--_max));margin-left:max(0px,calc((100% - var(--_max))/2));margin-right:auto}
 .section p,.section li{max-width:65ch}
 .section-dark{background:var(--_dark);color:var(--_paper)}
 .section-dark a,.hero a{color:var(--_accent)}
@@ -63,7 +63,7 @@ main{display:block}
 
 /* hero: full screen, headline revealed word by word */
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:6rem var(--_gutter) 5rem;background:radial-gradient(60rem 40rem at 80% 10%,color-mix(in srgb,var(--_dark2) 45%,transparent),transparent 70%),var(--_dark);color:var(--_paper);overflow:hidden}
-.hero>*{max-width:var(--_max);width:100%;margin-left:auto;margin-right:auto}
+.hero>*{width:min(100%,var(--_max));margin-left:max(0px,calc((100% - var(--_max))/2));margin-right:auto}
 .hero h1{color:var(--_paper);max-width:14ch}
 .hero .actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
 .kinetic{font-size:clamp(1.25rem,3vw + .5rem,2.5rem);font-weight:700;letter-spacing:-.02em;margin-top:1.5rem}
@@ -102,8 +102,8 @@ main{display:block}
 
 /* scrollytelling: a giant word that changes beside large step text */
 .scrolly{position:relative}
-.scrolly-inner{display:grid;grid-template-columns:1fr;gap:2rem;max-width:var(--_max);margin:0 auto}
-.scrolly-word{display:none;font-family:var(--_head);font-weight:800;text-transform:uppercase;letter-spacing:-.05em;line-height:.9;font-size:clamp(3.5rem,20vw,16rem);color:var(--_accent);word-break:break-word;transition:opacity .4s var(--_ease),transform .5s var(--_ease),filter .4s var(--_ease)}
+.scrolly-inner{display:grid;grid-template-columns:1fr;gap:2rem}
+.scrolly-word{display:none;font-family:var(--_head);font-weight:800;text-transform:uppercase;letter-spacing:-.05em;line-height:.9;font-size:clamp(3rem,17vw,16rem);color:var(--_accent);overflow-wrap:break-word;transition:opacity .4s var(--_ease),transform .5s var(--_ease),filter .4s var(--_ease)}
 .scrolly-word.is-swap{opacity:0;transform:translateY(.15em);filter:blur(8px)}
 .scrolly-steps{list-style:none;margin:0;padding:0;counter-reset:s}
 .scrolly-steps li{max-width:none;min-height:60svh;display:flex;align-items:center;font-size:clamp(1.5rem,3vw + .75rem,2.5rem);line-height:1.25;font-weight:600;letter-spacing:-.02em;opacity:1;transition:opacity .5s var(--_ease)}
@@ -176,7 +176,8 @@ th{background:color-mix(in srgb,var(--_muted) 10%,var(--_surface))}
   .site-header nav,.js .site-header nav[data-collapsed="true"]{display:flex;flex-basis:auto;gap:.25rem;padding:0}
   .cards{grid-template-columns:repeat(3,1fr)}
   .scrolly-inner{grid-template-columns:1fr 1fr;align-items:start;gap:3rem}
-  .js .scrolly-word{top:calc(50svh - 8vw);background:transparent;padding:0}
+  .scrolly-word{font-size:clamp(3rem,5.5vw,6rem)}
+  .js .scrolly-word{top:calc(50svh - 4vw);background:transparent;padding:0}
 }
 
 /* reduced motion: everything visible at once, no movement */
@@ -186,6 +187,7 @@ th{background:color-mix(in srgb,var(--_muted) 10%,var(--_surface))}
   .js .split .w,.js .mask .m>span,.js [data-reveal],.js .scrolly-steps li{opacity:1!important;transform:none!important;filter:none!important}
   .statement .w{color:inherit!important}
   .marquee-track{width:auto;flex-wrap:wrap;justify-content:center;transform:none}
+  .marquee-track>span{font-size:clamp(2.5rem,8vw,6rem)}
   .marquee-track>span:nth-child(n+7){display:none}
   .progress{display:none}
   .js .scrolly-word{position:static}
