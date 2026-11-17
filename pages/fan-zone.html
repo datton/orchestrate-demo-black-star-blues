@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fan zone | Black Star Blues</title>
-<meta name="description" content="An independent fan site for Ghanaian Chelsea supporters in England.">
+<meta name="description" content="Make a fan card. It stays in your browser; nothing is sent anywhere.">
 <link rel="stylesheet" href="../css/tokens.css">
 <link rel="stylesheet" href="../css/layout.css">
 <link rel="stylesheet" href="../css/site.css">
@@ -14,8 +14,34 @@
 <header class="site-header"><a class="brand" href="../index.html">Black Star Blues</a>
 <nav aria-label="Main"><a href="../index.html">Home</a><a href="../pages/match-day.html">Match day</a><a href="../pages/fan-zone.html">Fan zone</a><a href="../pages/about.html">About</a></nav></header>
 <main id="main">
-<h1>Fan zone</h1>
-<!-- content: build.fullstack -->
+<p class="eyebrow">Fan zone</p>
+<p class="lead">Make your fan card and see who else is in the stands with you on this device.</p>
+
+<section class="section" aria-labelledby="join-title">
+<h2 id="join-title">Make a fan card</h2>
+<form class="tool" data-tool="signup" novalidate>
+<fieldset>
+<legend>Your fan card</legend>
+<p class="field"><label for="fn-name">Name or nickname</label><input id="fn-name" name="name" type="text" maxlength="40" autocomplete="nickname" required aria-describedby="fn-name-err"><span class="error" id="fn-name-err" hidden></span></p>
+<p class="field"><label for="fn-city">Town or city in England</label><input id="fn-city" name="city" type="text" maxlength="40" autocomplete="address-level2" required aria-describedby="fn-city-err"><span class="error" id="fn-city-err" hidden></span></p>
+<p class="field"><label for="fn-how">Where do you usually watch?</label>
+<select id="fn-how" name="how"><option value="at the stadium">At the stadium</option><option value="in a pub">In a pub</option><option value="at home">At home</option><option value="wherever I can">Wherever I can</option></select></p>
+<p class="field"><label for="fn-food">Match-day food</label>
+<select id="fn-food" name="food"><option value="jollof">Jollof</option><option value="kenkey">Kenkey</option><option value="waakye">Waakye</option><option value="pie and chips">Pie and chips</option><option value="whatever is going">Whatever is going</option></select></p>
+<p class="field"><label for="fn-note">Your favourite match-day memory (optional)</label><textarea id="fn-note" name="note" rows="3" maxlength="200"></textarea></p>
+<button class="btn" type="submit">Make my card</button>
+</fieldset>
+</form>
+<p class="status" id="fn-status" role="status" aria-live="polite" tabindex="-1"></p>
+<p class="note">Cards stay in this browser only. Nothing is sent anywhere, and clearing your browser data removes them.</p>
+</section>
+
+<section class="section" aria-labelledby="cards-title">
+<h2 id="cards-title">Cards on this device</h2>
+<ul class="cards" id="fn-list"></ul>
+<p class="note" id="fn-empty">No cards yet. Make the first one above.</p>
+<p><button class="btn btn-ghost" type="button" id="fn-download" hidden>Download my cards (.txt)</button></p>
+</section>
 </main>
 <footer class="site-footer"><p>An independent fan site. Not affiliated with or endorsed by any football club.</p></footer>
 <script src="../js/nav.js"></script>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Match day | Black Star Blues</title>
-<meta name="description" content="An independent fan site for Ghanaian Chelsea supporters in England.">
+<meta name="description" content="A countdown to sample fixtures and a leave-by-time planner for Chelsea match days.">
 <link rel="stylesheet" href="../css/tokens.css">
 <link rel="stylesheet" href="../css/layout.css">
 <link rel="stylesheet" href="../css/site.css">
@@ -14,8 +14,44 @@
 <header class="site-header"><a class="brand" href="../index.html">Black Star Blues</a>
 <nav aria-label="Main"><a href="../index.html">Home</a><a href="../pages/match-day.html">Match day</a><a href="../pages/fan-zone.html">Fan zone</a><a href="../pages/about.html">About</a></nav></header>
 <main id="main">
-<h1>Match day</h1>
-<!-- content: build.fullstack -->
+<p class="eyebrow">Plan the day</p>
+<p class="lead">Count down to a match and work out when to leave. Every fixture on this page is a sample.</p>
+
+<section class="section" aria-labelledby="count-title">
+<h2 id="count-title">Match countdown</h2>
+<div class="tool" data-tool="countdown">
+<p class="note"><strong>Sample fixtures.</strong> Dates, opponents and times are made up and move with today&rsquo;s date. For real fixtures, use the club&rsquo;s own website.</p>
+<label for="fx-select">Choose a sample fixture</label>
+<select id="fx-select" data-fixture-select></select>
+<p class="big" data-fx-title></p>
+<p class="tool-time" data-fx-countdown></p>
+<p class="status" id="fx-status" role="status" aria-live="polite"></p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="plan-title">
+<h2 id="plan-title">Day planner</h2>
+<form class="tool" data-tool="planner" novalidate>
+<fieldset>
+<legend>Work out when to leave</legend>
+<p class="field"><label for="pl-fixture">Fixture</label><select id="pl-fixture" data-fixture-select></select></p>
+<p class="field"><label for="pl-how">How are you watching?</label>
+<select id="pl-how"><option value="stadium">At the stadium</option><option value="pub">In a pub</option><option value="home">At home with friends</option></select></p>
+<p class="field"><label for="pl-travel">Journey time (minutes)</label><input id="pl-travel" type="number" inputmode="numeric" min="0" max="300" step="5" value="60"></p>
+<p class="field"><label for="pl-early">Arrive before kick-off (minutes)</label><input id="pl-early" type="number" inputmode="numeric" min="0" max="240" step="5" value="90"></p>
+<p class="error" id="pl-error" role="alert" hidden></p>
+<button class="btn" type="submit">Work it out</button>
+</fieldset>
+<div class="result" id="pl-result" role="status" aria-live="polite" tabindex="-1"></div>
+</form>
+</section>
+
+<section class="section" aria-labelledby="bag-title">
+<h2 id="bag-title">Match-day bag</h2>
+<ul class="checks" data-bag>
+<li>Something blue</li><li>Ghana colours: a scarf, flag or wristband</li><li>Phone charger</li><li>Cash and a bank card</li><li>Something to eat from home</li><li>A way to get back that you have checked in advance</li>
+</ul>
+</section>
 </main>
 <footer class="site-footer"><p>An independent fan site. Not affiliated with or endorsed by any football club.</p></footer>
 <script src="../js/nav.js"></script>

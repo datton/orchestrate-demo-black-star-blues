@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Home | Black Star Blues</title>
-<meta name="description" content="An independent fan site for Ghanaian Chelsea supporters in England.">
+<meta name="description" content="An independent fan site for Ghanaian Chelsea supporters in England: match-day countdown, a plan-your-day tool and a fan sign-up.">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/site.css">
@@ -14,8 +14,61 @@
 <header class="site-header"><a class="brand" href="index.html">Black Star Blues</a>
 <nav aria-label="Main"><a href="index.html">Home</a><a href="pages/match-day.html">Match day</a><a href="pages/fan-zone.html">Fan zone</a><a href="pages/about.html">About</a></nav></header>
 <main id="main">
-<h1>Black Star Blues</h1>
-<!-- content: build.fullstack -->
+<section class="hero" aria-labelledby="hero-title">
+<p class="eyebrow">An independent fan site</p>
+<h1 id="hero-title">Black Star Blues</h1>
+<p class="lead">For Ghanaian Chelsea supporters in England: <span class="kinetic" data-words="two flags|one love|red, gold and green|blue on match day">two flags</span>.</p>
+<p class="hero-actions"><a class="btn" href="pages/match-day.html">Plan a match day</a> <a class="btn btn-ghost" href="pages/fan-zone.html">Join the fan zone</a></p>
+</section>
+
+<section class="band band-dark" aria-label="Words from the stands">
+<div class="marquee" aria-hidden="true"><p>Black Stars &middot; Blues &middot; Red, gold and green &middot; Kenkey and chips &middot; West London &middot; Accra and Fulham &middot; Together &middot; Black Stars &middot; Blues &middot; Red, gold and green &middot; Kenkey and chips &middot; West London &middot; Accra and Fulham &middot; Together &middot;</p></div>
+</section>
+
+<section class="section" aria-labelledby="next-title">
+<h2 id="next-title">Next sample match</h2>
+<p>A small countdown, using a sample fixture. Real dates are on the club&rsquo;s own site.</p>
+<div class="tool" data-tool="next-match">
+<p class="tool-label">Sample fixture</p>
+<p class="big" data-next-title>Loading&hellip;</p>
+<p class="tool-time" data-next-countdown></p>
+<p class="note">Sample data, placed a few days ahead of today so it never looks out of date.</p>
+</div>
+<p><a class="link" href="pages/match-day.html">Open the full countdown and day planner</a></p>
+</section>
+
+<section class="section statement-section" aria-label="Our idea">
+<p class="statement" data-statement>You can be loud for Accra and loyal to the Bridge. Nobody here asks you to pick one. This is a place for supporters who carry both stories to the ground, the pub or the sofa.</p>
+</section>
+
+<section class="section band-dark scrolly" aria-labelledby="day-title">
+<h2 id="day-title">A match day, in four steps</h2>
+<div class="scrolly-word" aria-hidden="true" data-scrolly-word>Plan</div>
+<ol class="steps">
+<li class="step" data-word="Plan"><h3>Plan</h3><p>Pick a match, set your journey time and work out when to leave. The day planner does the sums and shows them.</p></li>
+<li class="step" data-word="Dress"><h3>Dress</h3><p>Blue for the club, red, gold and green for home. A scarf, a flag, or both.</p></li>
+<li class="step" data-word="Gather"><h3>Gather</h3><p>Stadium, pub or living room: meet your people early, share the food, and settle in.</p></li>
+<li class="step" data-word="Sing"><h3>Sing</h3><p>Ninety minutes of nerves and noise, then talk about it all the way home.</p></li>
+</ol>
+</section>
+
+<section class="section" aria-labelledby="facts-title">
+<h2 id="facts-title">Two stories, a few numbers</h2>
+<ul class="stats">
+<li><span class="num" data-count="3">3</span><span class="label">colours in the Ghana flag: red, gold and green</span></li>
+<li><span class="num" data-count="1">1</span><span class="label">black star at its centre</span></li>
+<li><span class="num" data-count="1957">1957</span><span class="label">the year Ghana became independent</span></li>
+</ul>
+</section>
+
+<section class="section" aria-labelledby="go-title">
+<h2 id="go-title">Where to next</h2>
+<ul class="cards">
+<li class="card"><h3><a href="pages/match-day.html">Match day</a></h3><p>Countdown to sample fixtures and a leave-by-time planner.</p></li>
+<li class="card"><h3><a href="pages/fan-zone.html">Fan zone</a></h3><p>Make a fan card. It stays in your browser.</p></li>
+<li class="card"><h3><a href="pages/about.html">About</a></h3><p>Who this site is for, and what it is not.</p></li>
+</ul>
+</section>
 </main>
 <footer class="site-footer"><p>An independent fan site. Not affiliated with or endorsed by any football club.</p></footer>
 <script src="js/nav.js"></script>
