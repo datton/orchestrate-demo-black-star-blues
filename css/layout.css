@@ -49,7 +49,10 @@ main{display:block}
 .section>*{max-width:var(--_max);margin-left:auto;margin-right:auto}
 .section p,.section li{max-width:65ch}
 .section-dark{background:var(--_dark);color:var(--_paper)}
-.section-dark a{color:var(--_accent)}
+.section-dark a,.hero a{color:var(--_accent)}
+.section-dark a.button,.hero a.button{color:var(--_paper)}
+.section-dark a.button-light,.hero a.button-light{color:var(--_ink)}
+.section-dark a.button-ghost,.hero a.button-ghost{color:var(--_paper)}
 .section-dark h1,.section-dark h2,.section-dark h3{color:var(--_paper)}
 .lede{font-size:clamp(1.2rem,1.5vw + .9rem,1.75rem);line-height:1.45;color:var(--_muted);max-width:40ch}
 .section-dark .lede,.hero .lede{color:color-mix(in srgb,var(--_paper) 82%,transparent)}
