@@ -30,21 +30,26 @@
   var bar = doc.createElement('div'); bar.className = 'progress'; bar.setAttribute('aria-hidden', 'true'); doc.body.appendChild(bar);
 
   // Prepare split headings, masks, statements
+  // Page content may mark things up with classes or data attributes; both work. Hero h1 splits, every h2 gets a mask.
+  $('.hero h1').forEach(function (el) { el.classList.add('split'); });
+  $('main h2').forEach(function (el) { el.classList.add('mask'); });
   $('.split').forEach(function (el) { splitWords(el, false); });
   $('.mask').forEach(function (el) { splitWords(el, true); });
-  var statements = $('.statement');
+  var statements = $('.statement, [data-statement]');
   statements.forEach(function (el) { splitWords(el, false); el.classList.add('is-ready'); });
 
   // Marquee: duplicate the words for a seamless loop (copy is hidden from assistive tech)
   $('.marquee').forEach(function (m) {
-    var track = m.querySelector('.marquee-track'); if (!track || reduce) return;
-    track.setAttribute('aria-hidden', 'true');
+    var track = m.querySelector('.marquee-track');
+    if (!track) { track = doc.createElement('div'); track.className = 'marquee-track'; while (m.firstChild) track.appendChild(m.firstChild); m.appendChild(track); }
+    m.setAttribute('aria-hidden', 'true');
+    if (reduce) return;
     var kids = Array.prototype.slice.call(track.children);
     kids.forEach(function (k) { track.appendChild(k.cloneNode(true)); });
   });
 
   // Counters
-  function fmt(n, el) { var d = +el.getAttribute('data-decimals') || 0; return (el.getAttribute('data-prefix') || '') + n.toLocaleString('en-GB', { minimumFractionDigits: d, maximumFractionDigits: d }) + (el.getAttribute('data-suffix') || ''); }
+  function fmt(n, el) { var d = +el.getAttribute('data-decimals') || 0; var g = el.hasAttribute('data-group') ? el.getAttribute('data-group') !== 'false' : /,/.test(el.getAttribute('data-text') || el.textContent); if (!el.hasAttribute('data-text')) el.setAttribute('data-text', el.textContent); return (el.getAttribute('data-prefix') || '') + n.toLocaleString('en-GB', { useGrouping: g, minimumFractionDigits: d, maximumFractionDigits: d }) + (el.getAttribute('data-suffix') || ''); }
   function count(el) {
     var to = parseFloat(el.getAttribute('data-count')); if (isNaN(to)) return;
     if (reduce) { el.textContent = fmt(to, el); return; }
@@ -54,8 +59,8 @@
   }
 
   // Kinetic rotating word
-  $('[data-rotate]').forEach(function (el) {
-    var words = (el.getAttribute('data-rotate') || '').split('|').filter(Boolean);
+  $('[data-rotate], [data-words]').forEach(function (el) {
+    var words = (el.getAttribute('data-rotate') || el.getAttribute('data-words') || '').split('|').filter(Boolean);
     if (words.length < 2) return;
     if (!el.getAttribute('data-first')) el.setAttribute('data-first', el.textContent);
     if (reduce) return;
@@ -79,7 +84,8 @@
 
   // Scrollytelling: sticky giant word follows the active step
   var scrolls = $('.scrolly').map(function (sec) {
-    var word = sec.querySelector('.scrolly-word'), steps = $('.scrolly-steps li', sec);
+    var word = sec.querySelector('.scrolly-word, [data-scrolly-word]'), steps = $('.scrolly-steps li, .steps li', sec);
+    if (word) word.classList.add('scrolly-word');
     if (!word || !steps.length) return null;
     word.setAttribute('aria-hidden', 'true');
     word.textContent = steps[0].getAttribute('data-word') || '';
